@@ -4,8 +4,12 @@ body {
     padding: 0;
 }
 
+#content container {
+    color: white;
+}
+
 header {
-    background-color: #333333a3;
+    background-color: #333;
     color: #fff;
     padding: 20px;
     text-align: center;
@@ -17,22 +21,15 @@ main {
 
 section {
     margin-bottom: 30px;
-    border: 1px solid #ccc;
-    padding: 20px;
-    background-color: #ffffff8f; 
-    
 }
 
 h2 {
     margin-bottom: 10px;
 }
 
-input[type="file"], input[type="text"] {
+input[type="file"] {
     padding: 10px;
     margin-right: 10px;
-    border: 1px solid #ccc;
-    background-color: #fff; 
-    
 }
 
 button {
@@ -47,16 +44,12 @@ button:hover {
     background-color: #555;
 }
 
-#result, #infoResult {
+#result {
     margin-top: 10px;
 }
 
-.batasbawah {
-    background-color: #555;
-}
 
-.copyright {
-    padding-top: 3vh;
-    text-align: center;
-    color: black;
+.bawah {
+    margin: 25vh;
+    background-color: white;
 }
