@@ -6,6 +6,7 @@
     <script src="https://kit.fontawesome.com/dac9dbf949.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="classification.css">
     <title>Classification</title>
 </head>
 <body>
@@ -21,7 +22,7 @@
                 <a class="nav-link" aria-current="page" href="home.html">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="#">Classification</a>
+                <a class="nav-link active" href="classification.html">Classification</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="detect.html">Detection</a>
@@ -48,6 +49,24 @@
         </div>
         </div>
       </nav>
+      <header>
+        <h1>Fitur Pencarian, Informasi, dan Klasifikasi Tanaman</h1>
+    </header>
+    <main>
+        <section id="search">
+            <h2>Pencarian Tanaman</h2>
+            <input type="file" accept="image/*" capture="camera">
+            <button id="scanBtn">Scan</button>
+            <div id="result"></div>
+        </section>
+        <section id="info">
+            <h2>Informasi Tanaman</h2>
+            <input type="text" id="searchInfo" placeholder="Cari tanaman...">
+            <button id="searchInfoBtn">Cari</button>
+            <div id="infoResult"></div>
+        </section>
+    </main>
+    <footer>
 
     <!-- <footer>
       <p class="copyright">
@@ -55,7 +74,66 @@
       </p>
     </footer> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
+    <script>
+      document.getElementById('scanBtn').addEventListener('click', function() {
+        let fileInput = document.querySelector('input[type="file"]');
+        let resultDiv = document.getElementById('result');
+        
+        if (fileInput.files.length > 0) {
+            let file = fileInput.files[0];
+            let reader = new FileReader();
+            
+            reader.onload = function(event) {
+                // Proses pengenalan gambar menggunakan teknologi Computer Vision
+                let scannedResult = 'Nama tanaman: Bunga Matahari<br>Panduan Penanaman: ...\n';
+                resultDiv.innerHTML = scannedResult;
+            };
+            
+            reader.readAsDataURL(file);
+        } else {
+            resultDiv.innerHTML = 'Silakan unggah gambar terlebih dahulu.';
+        }
+    });
+    
+    document.getElementById('searchInfoBtn').addEventListener('click', function() {
+      let searchInput = document.getElementById('searchInfo').value;
+      let infoResultDiv = document.getElementById('infoResult');
+  
+      let searchResult = 'Hasil pencarian untuk "' + searchInput + '":<br><br>' +
+                          'Nama: Tomat atau rangam (Solanum lycopersicum) adalah tumbuhan dari keluarga Solanaceae, tumbuhan asli Amerika Tengah dan Selatan, dari Meksiko sampai Peru. Tomat merupakan tumbuhan siklus hidup singkat, dapat tumbuh setinggi 1 sampai 3 meter.<br><br>' +
+                          'Panduan Penanaman:<br>' +
+                          '1. Pemilihan Lokasi:<br>' +
+                          '&emsp;- Pilih lokasi yang terkena sinar matahari penuh (minimal 6-8 jam sinar matahari setiap hari).<br>' +
+                          '&emsp;- Pastikan tanah memiliki drainase yang baik untuk mencegah genangan air.<br>' +
+                          '2. Persiapan Tanah:<br>' +
+                          '&emsp;- Gemburkan tanah dengan cangkul atau garpu.<br>' +
+                          '&emsp;- Tambahkan kompos atau pupuk organik untuk meningkatkan kesuburan tanah.<br>' +
+                          '3. Pemilihan Varietas:<br>' +
+                          '&emsp;- Pilih varietas tomat yang sesuai dengan kondisi iklim dan kebutuhan Anda (misalnya, varietas yang tahan terhadap penyakit atau varietas yang cocok untuk ditanam di pot).<br>' +
+                          '4. Penanaman Benih atau Bibit:<br>' +
+                          '&emsp;- Jika menggunakan benih, tabur benih ke dalam pot atau persemaian dan tutupi dengan lapisan tipis tanah.<br>' +
+                          '&emsp;- Jika menggunakan bibit, tanam bibit tomat ke dalam tanah dengan kedalaman yang sama dengan potnya.<br>' +
+                          '5. Perawatan:<br>' +
+                          '&emsp;- Pastikan tanaman tetap terhidrasi dengan menyiraminya secara teratur, terutama saat cuaca panas.<br>' +
+                          '&emsp;- Berikan pupuk tambahan setiap beberapa minggu untuk mendukung pertumbuhan yang sehat.<br>' +
+                          '&emsp;- Bersihkan gulma secara teratur dan pastikan tanaman tidak terlalu berdekatan untuk mencegah penyebaran penyakit.<br>' +
+                          '&emsp;- Pertimbangkan untuk menopang tanaman dengan menggunakan tiang atau kawat untuk mendukung pertumbuhan tanaman yang tinggi.<br>' +
+                          '6. Pemanenan:<br>' +
+                          '&emsp;- Tomat biasanya siap dipanen dalam 60-80 hari setelah penanaman, tergantung pada varietasnya.<br>' +
+                          '&emsp;- Panen tomat saat buah telah mencapai ukuran dan warna yang diinginkan.<br>' +
+                          '&emsp;- Gunakan pisau atau gunting tajam untuk memotong tomat dari tangkainya dengan hati-hati untuk mencegah kerusakan.<br>' +
+                          '7. Penyakit dan Hama:<br>' +
+                          '&emsp;- Perhatikan tanda-tanda penyakit atau serangan hama seperti daun berubah warna, bintik-bintik, atau adanya serangga.<br>' +
+                          '&emsp;- Terapkan pengendalian organik atau pestisida yang aman jika diperlukan untuk melawan penyakit atau hama yang menyerang.<br>' +
+                          '8. Penyiraman dan Pemupukan:<br>' +
+                          '&emsp;- Pastikan untuk menyiram tanaman secara teratur, terutama selama periode pertumbuhan aktif dan saat cuaca kering.<br>' +
+                          '&emsp;- Berikan pemupukan tambahan setiap beberapa minggu menggunakan pupuk organik atau pupuk yang diformulasikan khusus untuk tanaman tomat.<br>';
+  
+      infoResultDiv.innerHTML = searchResult;
+  });
+  
+    
+    </script>
 
 </body>
 </html>
