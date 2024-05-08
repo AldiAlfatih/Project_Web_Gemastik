@@ -66,11 +66,19 @@
                 
                 <form>
                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Silahkan upload gambar</label>
-                    <input class="input_gambar" aria-describedby="file_input_help" id="input_gambar" type="file" accept="image/*">
+                    <main>
+                        <section id="detection">
+                            <h2>Deteksi Penyakit Tanaman</h2>
+                            <input type="file" accept="image/*" capture="camera">
+                            <button id="detectBtn">Deteksi</button>
+                            <div id="result"></div>
+                        </section>
+                    </main>
+                    <!-- <input class="input_gambar" aria-describedby="file_input_help" id="input_gambar" type="file" accept="image/*">
                     <!-- <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="input_gambar" type="file"> -->
-                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">JPG Only</p><br>
-                    <button id="upload_submit" type="submit" class="text-white text-xl bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Upload</button>
-                    <button id="capture-btn" class="text-white text-xl bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Identify</button>
+                    <!-- <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">JPG Only</p><br>
+                    <button id="upload_submit" type="submit" class="text-white text-xl bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Upload</button> -->
+                    <!-- <button id="capture-btn" class="text-white text-xl bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Identify</button> -->
                     <canvas id="canvas" style="display:none;"></canvas>
                 </form>
             </div>
@@ -78,16 +86,36 @@
                 <!-- Tampilkan hasil prediksi -->
             </div>
         </div>
+        
     </section>
 
-    <footer>
+    <footer class="bawah">
       <p class="copyright">
         Copyright: @BABAYAGA_Team 2024
       </p>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script>
-
-    </script>
+      document.getElementById('detectBtn').addEventListener('click', function() {
+          let fileInput = document.querySelector('input[type="file"]');
+          let resultDiv = document.getElementById('result');
+          
+          if (fileInput.files.length > 0) {
+              let file = fileInput.files[0];
+              let reader = new FileReader();
+              
+              reader.onload = function(event) {
+                  // Proses deteksi penyakit menggunakan teknologi Computer Vision
+                  let detectionResult = 'Daun tanaman terinfeksi penyakit X.<br>Saran Penanganan: ...';
+                  resultDiv.innerHTML = detectionResult;
+              };
+              
+              reader.readAsDataURL(file);
+          } else {
+              resultDiv.innerHTML = 'Silakan unggah foto daun tanaman.';
+          }
+      });
+      
+  </script>
 </body>
 </html>
