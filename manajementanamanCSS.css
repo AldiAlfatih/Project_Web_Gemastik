@@ -1,0 +1,77 @@
+/* styles.css */
+
+/* Style untuk body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.tabeel {
+    background-color: #fff; /* Putih */
+    padding: 20px; /* Untuk memberi jarak dari konten ke tepi */
+    border-radius: 5px; /* Untuk memberi sudut melengkung pada kotak */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Efek bayangan untuk menambah dimensi */
+}
+
+/* Style untuk judul */
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+/* Style untuk tabel */
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+/* Style untuk header kolom */
+th {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    text-align: left;
+}
+
+/* Style untuk sel data */
+td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+/* Style untuk baris ganjil */
+tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+/* Style untuk tautan */
+a {
+    color: #000000;
+    text-decoration: none;
+}
+
+tr:hover {
+    background-color: #4caf4fd2; /* Ubah warna latar belakang saat dihover */
+}
+
+/* Style untuk tautan saat dihover */
+a:hover {
+    text-decoration: underline;
+}
+
+.navigation {
+    display: flex; /* Mengatur tata letak flex */
+    justify-content: center; /* Memposisikan elemen ke tengah */
+}
+
+.page-link {
+    display: inline-block; /* Membuat tautan menjadi blok inline */
+    margin-right: 10px; /* Memberi jarak antara tautan */
+}
+
