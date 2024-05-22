@@ -1,12 +1,16 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/dac9dbf949.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <title>Classification</title>
+    <script src="https://kit.fontawesome.com/dac9dbf949.js" crossorigin="anonymous"></script>
+    <title>Home Page</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-transparent" id="navbar">
@@ -18,10 +22,10 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="index.php">Home</a>
+                <a class="nav-link active" aria-current="page" href="index.php">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="#">Classification</a>
+                <a class="nav-link" href="classification.html">Classification</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="detect.html">Detection</a>
@@ -42,20 +46,26 @@
                 </ul>
               </li>
             </ul>
-          <div class="profile">
-            <i class="fa-solid fa-user"></i>
+            <div class="profile">
+                <?php if (isset($_SESSION['loggedInStatus']) && $_SESSION['loggedInStatus'] == true): ?>
+                    <span class="navbar-text">
+                        Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?> | <a href="logout.php">Logout</a>
+                    </span>
+                <?php else: ?>
+                    <a href="login.php" class="btn btn-primary">Login</a>
+                    <a href="register.php" class="btn btn-secondary">Register</a>
+                <?php endif; ?>
+            </div>
           </div>
         </div>
-        </div>
-      </nav>
-
-    <!-- <footer>
-      <p class="copyright">
-        Copyright: @BABAYAGA_Team 2024
-      </p>
-    </footer> -->
+    </nav>
+    <div class="content container">
+        <h3>Identification, Detection, and <br>Share Your Observations with the Community</h3>
+        <p>Agri Siget is a website to help planters identify diseases in <br>plantation/cultivation crops, as well as to categorize and <br>display plant information scanned using a camera or image.</p>
+        <?php if (isset($_SESSION['loggedInStatus']) && $_SESSION['loggedInStatus'] == true && isset($_SESSION['username'])): ?>
+            <h4>Selamat datang, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h4>
+        <?php endif; ?>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-
 </body>
 </html>
